@@ -23,12 +23,7 @@ def main(conf_name, gpu):
     files = [file_path for file_path in glob.glob('%s/*.jpg' % conf.input_path)
              if not file_path[-7:-4] == '_gt']
 
-    pngs = [file_path for file_path in glob.glob('%s/*.png' % conf.input_path)
-            if not file_path[-7:-4] == '_gt']
-
-    files.extend(pngs)
-
-    print("find jpgs/pngs:", files)
+    print("find jpgs:", files)
     # Loop over all the files
     for file_ind, input_file in enumerate(files):
 
@@ -79,5 +74,5 @@ def main(conf_name, gpu):
 if __name__ == '__main__':
     conf_str = sys.argv[1] if len(sys.argv) > 1 else None
     # gpu_str = sys.argv[2] if len(sys.argv) > 2 else None
-    gpu_str = sys.argv[2] if len(sys.argv) > 2 else "0"  # 这句相当于用第0块显卡跑(如果你有的话)
+    gpu_str = sys.argv[2] if len(sys.argv) > 2 else "0" # 这句相当于用第0块显卡跑(如果你有的话)
     main(conf_str, gpu_str)
